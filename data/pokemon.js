@@ -463,4 +463,4 @@ export const pokeData = [
        'pokebase':'pidgey',
        'pokedex':'http://www.pokemon.com/us/pokedex/pidgey'
     }
-]'shape_id':9, 'shape':'wings', 'pokebase':'pidgey', 'pokedex':'http://www.pokemon.com/us/pokedex/pidgey' }];
+];
