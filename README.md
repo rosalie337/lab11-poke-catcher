@@ -94,7 +94,7 @@ Do today's work on a branch! (not `master`)
 
 [x] Create a new repo for this weekly project called `lab-11-pokemon-catcher`
 [x] Clone locally and setup with usually config/scaffolding
-* Inclde your wireframe in the repo
+[x] Inclde your wireframe in the repo
 
 ---
 
@@ -102,7 +102,7 @@ Do today's work on a branch! (not `master`)
 
 Looking For | Points (10)
 :--|--:
-Hosted on GitHub with URL in About section, Wireframe and group technial plan added to repo | 2
+[x] Hosted on GitHub with URL in About section, Wireframe and group technial plan added to repo | 2
 Display three random pokemon images _that are guaranteed to be different_ | 3
 Track TIMES encountered and TIMES CAPTURED for items during a single session | 3
 Display SINGLE-SESSION results on completion on a results page (and allow uer to clear local storage and play again) | 2
