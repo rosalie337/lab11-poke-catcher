@@ -16,14 +16,14 @@ This two-day lab is an app for aspiring pokemon masters. You will simulate the e
 
 ## Standard Setup Process
 
-1. Create a repo called `lab-11-pokemon-catcher` on Github
-    - make sure to click add a `README.md`
-1. Copy the URL of the new repo
-1. From the command line (terminal) clone your repo:
-    1. `git clone <url>`
-    1. **`cd` into your repo from the command line**
-    1. `npx create-alchemy-bootstrap .`
-    1. Launch vscode with `code .`
+[x] Create a repo called `lab-11-pokemon-catcher` on Github
+    [x] make sure to click add a `README.md`
+[x] Copy the URL of the new repo
+[x] From the command line (terminal) clone your repo:
+    [x] `git clone <url>`
+    [x] **`cd` into your repo from the command line**
+    [x] `npx create-alchemy-bootstrap .`
+    [x] Launch vscode with `code .`
 
 ## Requirements/Guidance
 
