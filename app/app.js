@@ -32,6 +32,15 @@ function generateSelection() {
     }
 
     const selection = gamePlay();
+
+    for(let i = 0; i < selection.length; i++){
+        const pokemonId = selection[i].id;
+        hasEncountered(pokemonId);
+        const caughtCount = findById(pokemonId, count).caught;
+        const encounteredCount = findById(pokemonId, encountered).encounters;
+        // NEXT STEPS:
+            // create element
+            // append element
 }
 
 function catches(id) {
