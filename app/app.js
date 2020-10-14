@@ -59,4 +59,4 @@ function userEncounter(id) {
         };
         encountered.push(newEncounter);
     }
-}
+};

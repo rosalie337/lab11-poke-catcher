@@ -10,7 +10,7 @@ This two-day lab is an app for aspiring pokemon masters. You will simulate the e
 - Manage complex app state over time, tracking and displaying:
     - Number of total pokemon caught so far in this session
     - How many of _each pokemon_ you've caught so far in this session
-    - How many times the user has encoutnered a given pokemon in this session
+    - How many times the user has encountered a given pokemon in this session
 - Use a `while` loop to pick random pokemon _with no duplicates_
 - Use `window.location` to navigate the user to another page
 
@@ -27,7 +27,7 @@ This two-day lab is an app for aspiring pokemon masters. You will simulate the e
 
 ## Requirements/Guidance
 
-**This is an individual assignment. You will do planning together in groups, but you will code and submit your own app. Use the group wireframes as a guide, but feel free to carve your own path if you like.**
+**This is an individual assignment. You will do planning together in groups, but you will code and submit your own app. Use the group wire-frames as a guide, but feel free to carve your own path if you like.**
 
 ## Pokecatcher Page
 1) First, you will select three random photos from the available pokemon and display them side-by-side-by-side in the browser window.
@@ -36,10 +36,10 @@ This two-day lab is an app for aspiring pokemon masters. You will simulate the e
     * STRETCH: Add the session to an array of all sessions stored in local storage. This can be used to report on all-time results. This will be an _array of arrays_.
 1) When the user clicks on a pokemon, three new non-duplicating random pokemon images need to be automatically displayed. The three pokemon images that are displayed should contain no duplicates.
     - [AS A PRETTY FREAKING HARD STRETCH GOAL: nor should they duplicate with any pokemon images that we displayed immediately before (you may want to layer in this second requirement after the first is working)].
-    - Additional stretch: Below each image, show how many of this kind of pokemon the user has encountered already, and how many they'ver already captured.
+    - Additional stretch: Below each image, show how many of this kind of pokemon the user has encountered already, and how many they've already captured.
 1)  At the top of the page, it should tell the user how many total pokemon they've caught so far.
 
-## Reults page
+## Results page
 1) After 10 total pokemon have been captured, navigate the user to a `/results` page and display a list of the pokemon with *times encountered* and *times captured*. Also display pokemon who were encountered, but never captured.
 1) You'll need a button that clears local storage for the current user session so that a new user can play with the site.
 
