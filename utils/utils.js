@@ -6,7 +6,7 @@ export function generateSelection(){
     do {
         option1 = Math.floor(Math.random() * pokeData.length);
         option2 = Math.floor(Math.random() * pokeData.length);
-        option3 = Math.floor(Math.randon() * pokeData.length);
+        option3 = Math.floor(Math.random() * pokeData.length);
     } while (option1 === option2 || option2 === option3 || option1 === option3);
     let randomOption1 = pokeData[option1];
     let randomOption2 = pokeData[option2];
