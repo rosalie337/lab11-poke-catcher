@@ -1,107 +1,92 @@
-//import functions 
-import { pokeData } from '../data/pokemon.js';
-import { findById, putInLocalStorage, addEncounter, addCaptures } from '../utils/utils.js';
+// import functions 
+import { rawPokeData } from '../data/pokemon.js'
+import { randomPokemon, findById, putInLocalStorage, addingCaptures, addingEncounters } from '../utils/utils.js';
 
-//grab DOM elements
+// grab DOM elements
 // const name = document.querySelectorAll('h2'); // not rendering
-const images = document.querySelectorAll('label > img');
-const radioButtons = document.querySelectorAll('input');
-const userCaptures = document.querySelector('user-captures');
-const moreButton = document.querySelector('more-button');
+export const images = document.querySelectorAll('label > img');
+export const radios = document.querySelectorAll('input');
+export const caughtDiv = document.querySelector('caught-div');
+export const moreButton = document.querySelector('more-button');
 
 // initialize state
-let count = 0;
+let captures = 0;
 let pokemonResults = []
-let encountered = 0;
+let encounters = 0;
+
+// renderPokemon function 
+export function renderPokemon() {
+
+    let firstPokemon = randomPokemon(rawPokeData);
+    let secondPokemon = randomPokemon(rawPokeData);
+    let thirdPokemon = randomPokemon(rawPokeData);
+    
+    while (firstPokemon.id === secondPokemon.id || secondPokemon.id === thirdPokemon.id || thirdPokemon.id === firstPokemon.id) {
+        firstPokemon = randomPokemon(rawPokeData);
+        secondPokemon = randomPokemon(rawPokeData);
+        thirdPokemon = randomPokemon(rawPokeData);
+    }
+   
+    
+    radios[0].value = firstPokemon.pokemon;
+    images[0].src = firstPokemon.url_image;
+    radios[0].checked = false;
+
+    radios[1].value = secondPokemon.id;
+    images[1].src = secondPokemon.url_image;
+    radios[1].checked = false;
+
+    radios[2].value = thirdPokemon.id;
+    images[2].src = thirdPokemon.url_image;
+    radios[2].checked = false;
+}
+renderPokemon();
 
 // set event listeners to update state and DOM
+//encountered
+for (let i = 0; i < radios.length; i++) {
+    radios[i].addEventListener('change', (e) => {	
+        caughtDiv.classList.remove('hidden');
 
-export function generateSelection() {
+        radios.forEach((radio) => {
+            let encounteredPokemon = findById(pokemonResults, radio.value);
+            if (!encounteredPokemon) {
+                encounteredPokemon = {
+                    pokeName: radio.value,
+                    encountered: 1, 
+                    captured: 0 
+                },
+                pokemonResults.push(encounteredPokemon);
+            } else {
+                encounteredPokemon.encountered++;
+            } 
+        });
 
-    let option1 = Math.floor(Math.random() * pokeData.length);
-    let option2 = 0
-    let option3 = 0
-        do {
-            option2 = Math.floor(Math.random() * pokeData.length);
-            option3 = Math.floor(Math.random() * pokeData.length);
-   
-        } while (option1 === option2 || option2 === option3 || option1 === option3);
-            let randomOption1 = pokeData[option1];
-            let randomOption2 = pokeData[option2];
-            let randomOption3 = pokeData[option3];
-    
-    
-    // name[0].value = randomOption1.pokemon; // not rendering
-    radioButtons[0].value = randomOption1.id;
-    images[0].src = randomOption1.url_image;
-    radioButtons[0].check = false;
+// captured
+        for (let i = 0; i < radios.length; i++) {
+            addingEncounters(pokemonResults, radios[0].value);
+            addingEncounters(pokemonResults, radios[1].value);
+            addingEncounters(pokemonResults, radios[2].value);
 
-    // name[1].value = randomOption2.pokemon; // not rendering
-    radioButtons[1].value = randomOption2.id;
-    images[1].src =randomOption2.url_image;
-    radioButtons[1].check = false;
-
-    // name[2].value = randomOption1.pokemon; // not rendering
-    radioButtons[2].value = randomOption3.id;
-    images[2].src =randomOption3.url_image;
-    radioButtons[2].check = false;
+            caughtDiv.classList.remove('hidden');
+            radios[i].disabled = true;
+            images[i].style.opacity = .5;
+        }
+        addingCaptures(pokemonResults, e.target.value);
+        addingCaptures.captured++;
+        putInLocalStorage('RESULTS', pokemonResults);
+    });
 }
 
-generateSelection();
-
-function generateGamePlay() {
-    if (count >= 10) {
-       resultsData(encountered);
-       window.location('results.html');
-    }
-
-    userCaptures.textContent = `You have ${count} Pokemon in your Pokedex `;
-    count++;
-    
-    generateSelection()
-    for(let i= 0; radioButtons < i; i++) {
-
-    }
-        radio[i].addEventListener()
-    for(let i = 0; i < selection.length; i++){
-        const pokemonId = selection[i].id;
-        hasEncountered(pokemonId);
-        const caughtCount = findById(pokemonId, count).caught;
-        const encounteredCount = findById(pokemonId, encountered).encounters;
-        
-    }
-}
-
-
-generateSelection();
-
-
-// captured pokemon
-for(let i = 0; i < radioButtons.length; i++) {
-    addEncounter(pokemonResults, radioButtons[0].value)
-    addEncounter(pokemonResults, radioButtons[1].value)
-    addEncounter(pokemonResults, radioButtons[2].value)
-
-    userCaptures.classList.remove('hidden');
-    radioButtons[i].disabled = true;
-    images[i].style.opacity = .5;
-}
-addCaptures(pokemonResults, e.target.value);
-addEncounter.caught++;
-putInLocalStorage('RESULTS', pokemonResults);
-
-
-
+// more button event listener
 moreButton.addEventListener('click', () => {
-    count--;
-    for (let i = 0; i < radioButtons.length; i++) {
-        radioButtons[i].disabled = false;
+    captures--;
+    for (let i = 0; i < radios.length; i++) {
+        radios[i].disabled = false;
         images[i].style.opacity = 100;
     }
-    if (count === 0) {
-        window.location.href = './result/results.html'
+    if (captures === 0) { 
+        window.location.href = './results/index.html';
     }
+    renderPokemon();
 });
-
-generateSelection()
-
