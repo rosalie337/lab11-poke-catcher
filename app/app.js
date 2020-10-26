@@ -4,10 +4,10 @@ import { randomPokemon, findById, putInLocalStorage, addingCaptures, addingEncou
 
 // grab DOM elements
 // const name = document.querySelectorAll('h2'); // not rendering
-export const images = document.querySelectorAll('label > img');
-export const radios = document.querySelectorAll('input');
-export const caughtDiv = document.querySelector('caught-div');
-export const moreButton = document.querySelector('more-button');
+const images = document.querySelectorAll('label > img');
+const radios = document.querySelectorAll('input');
+const caughtDiv = document.querySelector('caught-div');
+const moreButton = document.querySelector('more-button');
 
 // initialize state
 let captures = 0;
