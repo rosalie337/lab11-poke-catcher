@@ -1,6 +1,6 @@
 //import functions 
 import { pokeData } from '../data/pokemon.js';
-import { findById } from '../utils/utils.js';
+import { findById, putInLocalStorage, addEncounter, addEncounter } from '../utils/utils.js';
 
 //grab DOM elements
 // const name = document.querySelectorAll('h2'); // not rendering
@@ -75,21 +75,6 @@ function generateGamePlay() {
 
 generateSelection();
 
-
-
-function catches(id) {
-    let catches = findById(id, encountered);
-    if (catches) {
-        catches.caught++;
-    } else {
-        const newCatch = {
-            _id: id,
-            encounters: 0,
-            caught: 1
-        }
-        encounter.push(newCatch);
-    }
-}
 
 // captured pokemon
 for(let i = 0; i < radioButtons.length; i++) {
