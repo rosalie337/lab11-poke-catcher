@@ -16,30 +16,7 @@ let encountered = 0;
 
 // set event listeners to update state and DOM
 
-function generateGamePlay() {
-    if (count >= 10) {
-       resultsData(encountered);
-       window.location('results.html');
-    }
-
-    userCaptures.textContent = `You have ${count} Pokemon in your Pokedex `;
-    count++;
-    
-    generateSelection()
-    for(let i= 0; radioButtons < i; i++) {
-
-    }
-        radio[i].addEventListener()
-    for(let i = 0; i < selection.length; i++){
-        const pokemonId = selection[i].id;
-        hasEncountered(pokemonId);
-        const caughtCount = findById(pokemonId, count).caught;
-        const encounteredCount = findById(pokemonId, encountered).encounters;
-        
-    }
-}
-
-export function generateSelection(){
+export function generateSelection() {
 
     let option1 = Math.floor(Math.random() * pokeData.length);
     let option2 = 0
@@ -72,6 +49,32 @@ export function generateSelection(){
 
 generateSelection();
 
+function generateGamePlay() {
+    if (count >= 10) {
+       resultsData(encountered);
+       window.location('results.html');
+    }
+
+    userCaptures.textContent = `You have ${count} Pokemon in your Pokedex `;
+    count++;
+    
+    generateSelection()
+    for(let i= 0; radioButtons < i; i++) {
+
+    }
+        radio[i].addEventListener()
+    for(let i = 0; i < selection.length; i++){
+        const pokemonId = selection[i].id;
+        hasEncountered(pokemonId);
+        const caughtCount = findById(pokemonId, count).caught;
+        const encounteredCount = findById(pokemonId, encountered).encounters;
+        
+    }
+}
+
+
+generateSelection();
+
 
 
 function catches(id) {
@@ -88,14 +91,32 @@ function catches(id) {
     }
 }
 
+// captured pokemon
+for(let i = 0; i < radioButtons.length; i++) {
+    addEncounter(pokemonResults, radioButtons[0].value)
+    addEncounter(pokemonResults, radioButtons[1].value)
+    addEncounter(pokemonResults, radioButtons[2].value)
+
+    userCaptures.classList.remove('hidden');
+    radioButtons[i].disabled = true;
+    images[i].style.opacity = .5;
+}
+addCaptures(pokemonResults, e.target.value);
+addEncounter.caught++;
+putInLocalStorage('RESULTS', pokemonResults);
+
+
+
 moreButton.addEventListener('click', () => {
     count--;
     for (let i = 0; i < radioButtons.length; i++) {
         radioButtons[i].disabled = false;
         images[i].style.opacity = 100;
     }
-    if (count --- 0) {
+    if (count === 0) {
         window.location.href = './result/results.html'
     }
 });
+
+generateSelection()
 
