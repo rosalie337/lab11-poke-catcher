@@ -1,6 +1,6 @@
 //import functions 
 import { pokeData } from '../data/pokemon.js';
-import { findById, putInLocalStorage, addEncounter, addEncounter } from '../utils/utils.js';
+import { findById, putInLocalStorage, addEncounter, addCaptures } from '../utils/utils.js';
 
 //grab DOM elements
 // const name = document.querySelectorAll('h2'); // not rendering
