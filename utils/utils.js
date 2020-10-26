@@ -61,3 +61,19 @@ export function userCapture(id) {
         caught.push(newCatch);
     }
 }
+
+// Get from localStorage function
+export function grabFromLocalStorage(key) {
+    const item = localStorage.getItem(keu);
+
+    return JSON.parse(item);
+}
+
+// Set from localStorage function
+export function putInLocalStorage(key, value) {
+    const stringyItem = JSON.stringify(value);
+
+    localStorage.setItem(key, stringyItem);
+
+    return value;
+}
