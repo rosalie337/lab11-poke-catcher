@@ -4,14 +4,15 @@ import { findById } from '../utils/utils.js';
 
 //grab DOM elements
 // const name = document.querySelectorAll('h2'); // not rendering
-const images = document.querySelectorAll('img');
+const images = document.querySelectorAll('label > img');
 const radioButtons = document.querySelectorAll('input');
 const userCaptures = document.querySelector('user-captures');
 const moreButton = document.querySelector('more-button');
 
 // initialize state
 let count = 0;
-let encountered = [];
+let pokemonResults = []
+let encountered = 0;
 
 // set event listeners to update state and DOM
 
@@ -38,7 +39,7 @@ function generateGamePlay() {
     }
 }
 
-function generateSelection(){
+export function generateSelection(){
 
     let option1 = Math.floor(Math.random() * pokeData.length);
     let option2 = 0
@@ -69,6 +70,10 @@ function generateSelection(){
     radioButtons[2].check = false;
 }
 
+generateSelection();
+
+
+
 function catches(id) {
     let catches = findById(id, encountered);
     if (catches) {
@@ -82,29 +87,15 @@ function catches(id) {
         encounter.push(newCatch);
     }
 }
-function userEncounter(id) {
-    let encounter = findById(id, encountered);
-    if (encounter) {
-        encountered.encounters ++;
-    } else {
-        const newEncounter = {
-            _id: id,
-            encounters: 1,
-            caught: 0
-        };
-        encountered.push(newEncounter);
-    }
-};
 
 moreButton.addEventListener('click', () => {
     count--;
-    for (let i = 0; i < radio.length; i++) {
+    for (let i = 0; i < radioButtons.length; i++) {
         radioButtons[i].disabled = false;
         images[i].style.opacity = 100;
     }
     if (count --- 0) {
         window.location.href = './result/results.html'
     }
-    generateSelection();
 });
 
